@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/bin/bootstrap.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/bin/commons-daemon.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/bin/tomcat-juli.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/annotations-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/catalina.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/catalina-ant.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/catalina-ha.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/catalina-tribes.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/ecj-4.2.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/el-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/jasper.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/jasper-el.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/jsp-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/servlet-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-coyote.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-dbcp.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-i18n-es.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-i18n-fr.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-i18n-ja.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-jdbc.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Documents/School/SemesterF/JavaEE/apache-tomcat-7.0.34-windows-x86/apache-tomcat-7.0.34/lib/tomcat-util.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/antlr-2.7.6.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/commons-collections-3.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/derbyclient.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/dns_sd.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/dnsns.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/dom4j-1.6.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/hibernate3.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/javassist-3.9.0.GA.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/jta-1.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/junit-4.0.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/localedata.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/log4j-1.2.16.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/log4j-1.2.17.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/mysql-connector-java-5.1.13-bin.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/slf4j-api-1.5.8.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/slf4j-log4j12-1.5.6.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/sunec.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/sunjce_provider.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/sunmscapi.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/itamarbl/Downloads/finalProjectV1.0/finalProjectV1.0/WebContent/WEB-INF/lib/zipfs.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

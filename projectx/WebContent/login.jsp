@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=windows-1255"
+    pageEncoding="windows-1255"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Login Page</title> 
+<link  rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+<script>
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
+});
+</script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+</head>
+<body>
+
+	<form action="http://localhost:8080/finalProjectV1.0/academic/UserLogin/" method="post">
+	<div data-role="page" id="home">
+	<div data-role="header">
+		<h1>Login Page</h1>
+	</div>
+	<div data-role="fieldcontain"> 
+		<label for="name">User-Name:</label> 
+		<input type="text" name="User" id="User" value=""  /> 
+	</div>
+	<div data-role="fieldcontain"> 
+		<label for="name">Password:</label> 
+		<input type="password" name="Password" id="Password" value=""  /> 
+	</div>
+	<div data-role="content">
+		<p>To login please enter your user-name and password</p>
+		<p><input type="submit" value="login" data-transition="pop" data-rel="dialog" data-role="button"/></p>
+	</div>
+	<div style="color:red;" data-role="content">
+	<%
+		String comments =(String) request.getSession().getAttribute("comments");
+		if (comments == null)
+			comments = "";
+	%>
+		<p><%= comments %></p>
+	</div>
+	
+	<div data-role="footer">
+		<h4>WebStore</h4>
+	</div>
+	</div>
+	</form>
+
+</body>
+</html>
