@@ -2,34 +2,34 @@
 
 	part one
 	++++++
-	 
-	You should develop the WebStoreDAO class. 
-	You should use Hibernate. 
-	
-	The database should include one table only. 
-	The 'products' table. The class WebStoreDAO should implement the IWebStoreDAO 
-	interface. The interface should include the definition of two methods. The 
-	first returns a Product object that represents a specific product. The second 
-	returns an iterator for getting Product objects that represents all products. 
-	
+
+	You should develop the WebStoreDAO class.
+	You should use Hibernate.
+
+	The database should include one table only.
+	The 'products' table. The class WebStoreDAO should implement the IWebStoreDAO
+	interface. The interface should include the definition of two methods. The
+	first returns a Product object that represents a specific product. The second
+	returns an iterator for getting Product objects that represents all products.
+
 	part two
 	++++++
-	
-	You should develop the WebStoreController servlet. 
-	This servlet should handle all requests sent to the web application (this 
-	servlet should be mapped with a URL address that ends with *). It should be capable 
+
+	You should develop the WebStoreController servlet.
+	This servlet should handle all requests sent to the web application (this
+	servlet should be mapped with a URL address that ends with *). It should be capable
 	of handling the following possible requests:
-	
+
 	/products => the controller will forward the execution to the products.jsp file
-	
-	/product/123123 => the controller will forward the execution to the product.jsp file 
+
+	/product/123123 => the controller will forward the execution to the product.jsp file
 	for presenting the details of a specific product
-	
-	The product.jsp should display details of a specific product. The products.jsp should 
-	include a link such as 'more info' near each one of the product names. Pressing the 
-	'more info' link the user will be taken to a web page (product.jsp... via the controller) 
+
+	The product.jsp should display details of a specific product. The products.jsp should
+	include a link such as 'more info' near each one of the product names. Pressing the
+	'more info' link the user will be taken to a web page (product.jsp... via the controller)
 	that presents the details of that specific product.
-	
+
 -->
 <html>
 <head>
@@ -38,17 +38,18 @@
 </head>
 <body>
 	<form action="http://localhost:8080/finalProjectV1.0/academic/sendRequestForProduct/" method="get">
-	product id<input id="productId" name="productId"/>
-	<input id="submitProduct" id="submitProduct" type="submit" value="Get Product"/>
+	product id <input id="productId" name="productId"/>
+	<input id="submitProduct" name="submitProduct" type="submit" value="Get Product"/>
 	</form>
 	<form action="http://localhost:8080/finalProjectV1.0/academic/sendRequestForProducts/" method="get">
-	<input id="submitProducts" id="submitProducts" type="submit" value="Get All Products"/>
+	<input id="submitProducts" name="submitProducts" type="submit" value="Get All Products"/>
 	</form>
 	<form action="http://localhost:8080/finalProjectV1.0/academic/addProduct/" method="get">
-	<input id="addProduct" id="addProduct" type="submit" value="add Product"/>
+	<input id="addProduct" name="addProduct" type="submit" value="add Product"/>
 	</form>
 	<form action="http://localhost:8080/finalProjectV1.0/academic/showAllMyProducts/" method="get">
-	<input id="showAllMyProducts" id="showAllMyProducts" type="submit" value="Show My Products"/>
+	<input id="showAllMyProducts" name="showAllMyProducts" type="submit" value="Show My Products"/>
 	</form>
+	<script type="text/javascript" src="./js/common.js"></script>
 </body>
 </html>
