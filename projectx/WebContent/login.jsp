@@ -75,8 +75,7 @@ $(document).bind("mobileinit", function() {
 						    for (Cookie cookie : request.getCookies())	{
 											if (cookie.getName().equals("UserCookie"))	{
 	%>
-	<script>$("#User").val("<%=cookie.getValue()%>
-		")
+	<script>$("#User").val("<%=cookie.getValue()%>")
 	</script>
 	<%
 	    break;
