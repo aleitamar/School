@@ -9,7 +9,8 @@
 <body>
 	<%
 		boolean found = false;
-		for (Cookie cookie : request.getCookies())	{
+		Cookie[] temp = request.getCookies();
+		for (Cookie cookie : temp)	{
 			if (cookie.getName().equals("UserCookie"))	{
 				found = true;
 				%>
