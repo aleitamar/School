@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 <title>Insert title here</title>
+<%@ include file="jqueryInclude.jsp" %>
 </head>
 <body>
 	<%@ page import="java.util.List" %>

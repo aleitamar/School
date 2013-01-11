@@ -55,16 +55,19 @@ public class WebStoreHttpServlet extends HttpServlet {
 			sendRequestForProducts(request, response);
 		} else if (uri.equals("/finalProjectV1.0/academic/addProduct/"))	{
 			addProduct(request, response);
+			homepage(request, response);
 		} else if (uri.equals("/finalProjectV1.0/academic/showAllMyProducts/"))	{
 			showAllMyProducts(request, response);
 		} else if (uri.equals("/finalProjectV1.0/academic/SignOut/"))	{
 			logout(request, response);
 		} else if (uri.equals("/finalProjectV1.0/academic/HomePage/"))	{
 			homepage(request, response);
+		} else if (uri.equals("/finalProjectV1.0/academic/SignIn/"))	{
+			forwardToLoginPage(request, response);
 		} else if (uri.equals("/finalProjectV1.0/academic/Camera/"))	{
 			getServletContext().getRequestDispatcher("/examples/04-jquery-mobile.html").forward(request, response);
 		} else {
-			forwardToLoginPage(request, response);
+			redirectToLoginPage(response);
 		}
 	}
 	
@@ -72,7 +75,6 @@ public class WebStoreHttpServlet extends HttpServlet {
 	private void homepage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		response.sendRedirect("/finalProjectV1.0/home.jsp");
-//		getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 	}
 	
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
@@ -116,13 +118,18 @@ public class WebStoreHttpServlet extends HttpServlet {
 		}
 	}
 	
+	private void redirectToLoginPage(HttpServletResponse response) throws IOException {
+		response.sendRedirect("/finalProjectV1.0/academic/SignIn/");
+	}
+	
 	private void forwardToLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-//		response.sendRedirect("/finalProjectV1.0/login.jsp");
+
 	}
 	
 	private void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
+		//TODO: handle null
 		try {
 			WebStoreDAO db  = WebStoreDAO.getProductHybernateDAO();
 			Integer productId = Integer.parseInt(request.getParameter("productId"));

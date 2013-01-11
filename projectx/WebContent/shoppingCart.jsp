@@ -8,8 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
 	ShoppingCart shoppingCart =(ShoppingCart) request.getAttribute("shoppingCart");
-	if shoppingCart.get
-	out.println(shoppingCart);
+	if (shoppingCart.getShoppingCart() != null) {
+		out.println(shoppingCart);
+	}
+	 %>
 </body>
 </html>
