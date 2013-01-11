@@ -6,6 +6,7 @@
 <title>Login Page</title> 
 <link  rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/md5.js"></script>
 <script>
 $(document).bind("mobileinit", function () {
     $.mobile.ajaxEnabled = false;
@@ -31,7 +32,18 @@ $(document).bind("mobileinit", function () {
 	</div>
 	<div data-role="content">
 		<p>To login please enter your user-name and password</p>
-		<p><input type="submit" value="login" data-transition="pop" data-rel="dialog" data-role="button"/></p>
+
+		<!-- 		<script>
+					function hashAndGet(){
+						var passhash = CryptoJS.MD5($("#Password").val()).toString();
+	
+						$.get('http://localhost:8080/finalProjectV1.0/academic/UserLogin/', {
+							User : $("#User").val(),
+							Password : passhash
+						});
+					}
+				</script> -->
+				<p><input type="submit" value="login" data-transition="pop" data-rel="dialog" data-role="button"/></p>
 	</div>
 	<div style="color:red;" data-role="content">
 	<%
