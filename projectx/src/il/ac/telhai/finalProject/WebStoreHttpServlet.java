@@ -70,7 +70,8 @@ public class WebStoreHttpServlet extends HttpServlet {
 	
 	private void homepage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
-		getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+		response.sendRedirect("/finalProjectV1.0/home.jsp");
+//		getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 	}
 	
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
@@ -84,7 +85,7 @@ public class WebStoreHttpServlet extends HttpServlet {
 		userCookie.setMaxAge(0);
 		userCookie.setPath("/");
 		response.addCookie(userCookie);
-//		request.getSession().invalidate();
+		request.getSession().invalidate();
 		homepage(request, response);
 		logger.info("user signout finished");
 	}
@@ -106,7 +107,8 @@ public class WebStoreHttpServlet extends HttpServlet {
 			
 			// if we got here username and password are correct
 			setUserCookie(request, response, loginUser.getName());
-			getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+			response.sendRedirect("/finalProjectV1.0/home.jsp");
+//			getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 //			response.sendRedirect("/finalProjectV1.0/home.jsp");
 		} catch (WebStoreDAOException e) {
 			e.printStackTrace();
