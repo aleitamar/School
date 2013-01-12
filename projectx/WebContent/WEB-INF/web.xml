@@ -21,4 +21,9 @@
         <servlet-name>controller</servlet-name>
         <url-pattern>/academic/*</url-pattern>
     </servlet-mapping>
+    
+    <error-page>
+    	<location>/errorPage.jsp</location>
+	</error-page>
+
 </web-app>

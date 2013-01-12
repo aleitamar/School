@@ -7,14 +7,9 @@
 <%@ include file="jqueryInclude.jsp" %>
 </head>
 <body>
-	<%-- Log error on server side --%>
-	<%
-		if (exception != null) {
-			System.err.println("Error : " + exception.getMessage());
-		}
-	%>
-
 	<%-- Display generic error to client --%>
-	<b>An error occurred !</b>
+	<br>
+	<b>An error occurred !</b><br/>
+	<a href="/finalProjectV1.0/home.jsp">Go To Homepage</a>
 </body>
 </html>

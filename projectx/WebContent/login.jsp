@@ -1,25 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=windows-1255"
-	pageEncoding="windows-1255"%>
+	pageEncoding="windows-1255"  errorPage="./academic/errorPage.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Login Page</title>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1255">
-<link rel="stylesheet" type="text/css"
-	href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
-<script type="text/javascript"
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<%@ include file="jqueryInclude.jsp" %>
 <script type="text/javascript"
 	src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/md5.js"></script>
-<script>
-$(document).bind("mobileinit", function() {
-                $.mobile.ajaxEnabled = false;
-            });
-</script>
-<script type="text/javascript"
-	src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-
 </head>
 <body>
 	<!-- div id="loadingMask" style="width: 100%; height: 100%; position: fixed; background: #fff;">Loading...</div> -->
@@ -58,8 +47,9 @@ $(document).bind("mobileinit", function() {
 			<div style="color: red;" data-role="content">
 				<%
 				    String comments =(String) request.getAttribute("comments");
-																										if (comments == null)
-																											comments = "";
+					if (comments == null) {
+						comments = "";
+					}
 				%>
 				<p><%=comments%></p>
 			</div>
