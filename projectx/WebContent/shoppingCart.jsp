@@ -5,14 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
-<title>Insert title here</title>
+<title>My shopping cart</title>
+<%@ taglib uri="WEB-INF/WebStoreJSPTags.tld" prefix="WS" %> 
+<%@ include file="jqueryInclude.jsp" %>
 </head>
 <body>
-<%
-	ShoppingCart shoppingCart =(ShoppingCart) request.getAttribute("shoppingCart");
-	if (shoppingCart.getShoppingCart() != null) {
-		out.println(shoppingCart);
-	}
-	 %>
+<WS:print scope="session" attribute="shoppingCart"/>
 </body>
 </html>

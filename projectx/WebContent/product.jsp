@@ -38,7 +38,7 @@
 		}(window, window.Code.PhotoSwipe));
 		
 	</script>
-	
+	<%@ include file="jqueryInclude.jsp" %>
 </head>
 <body>
 	<%

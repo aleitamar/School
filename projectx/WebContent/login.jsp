@@ -9,6 +9,7 @@
 <%@ include file="jqueryInclude.jsp" %>
 <script type="text/javascript"
 	src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/md5.js"></script>
+	<%@ taglib uri="WEB-INF/WebStoreJSPTags.tld" prefix="WS" %> 
 </head>
 <body>
 	<!-- div id="loadingMask" style="width: 100%; height: 100%; position: fixed; background: #fff;">Loading...</div> -->
@@ -33,7 +34,7 @@
 				<p>To login please enter your user-name and password</p>
 				<script>
 				$("form").submit(function() {
-						$("#PasswordHash").val(CryptoJS.MD5($("#Password").val()))
+						$("#PasswordHash").val(CryptoJS.MD5($("#Password").val()));
 					    return true;
 					});
 				
@@ -45,12 +46,9 @@
 				</p>
 			</div>
 			<div style="color: red;" data-role="content">
-				<%
-				    String comments =(String) request.getAttribute("comments");
-																										if (comments == null)
-																											comments = "";
-				%>
-				<p><%=comments%></p>
+			
+			<WS:print attribute="comments"/>
+			
 			</div>
 			<div data-role="footer">
 				<h4>WebStore</h4>
