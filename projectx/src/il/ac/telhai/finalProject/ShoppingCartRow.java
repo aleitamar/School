@@ -14,7 +14,7 @@ public class ShoppingCartRow {
 	}
 	
 	public void decreaseNumberOfproducts(){
-		numberOfproducts++;
+		numberOfproducts--;
 	}
 	
 	public void setNumberOfproducts(int numberOfproducts) {

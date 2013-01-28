@@ -31,7 +31,7 @@ public class WebStoreDAO implements IWebStoreDAO<Product>{
 	 * @throws WebStoreDAOException in case cannot add the product to the database
 	 */
 	@Override
-	public Product getProduct(Integer id) throws WebStoreDAOException{
+	public Product getProduct(Integer id) throws WebStoreDAOException {
 		
 		Session session = null;
 		try		
@@ -39,8 +39,9 @@ public class WebStoreDAO implements IWebStoreDAO<Product>{
 			session = factory.openSession();
 			session.beginTransaction();
 			Product product = (Product)session.get(new Product().getClass(), id);
-//			another option to the Class Object
-//			Product product = (Product)session.get(Class.forName("il.ac.telhai.finalProject.Product"), i);
+			if (product == null) {
+				throw new WebStoreDAOException("Product not found!");
+			}
 			return product;
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -63,8 +64,6 @@ public class WebStoreDAO implements IWebStoreDAO<Product>{
 		try {
 			session = factory.openSession();
 			session.beginTransaction();
-//			List<Product> products = session.createQuery("from Product").list();
-//			return products.toArray(new Product[products.size()]);
 			return session.createQuery("from Product").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();

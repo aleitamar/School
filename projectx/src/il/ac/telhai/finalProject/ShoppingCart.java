@@ -54,13 +54,14 @@ public class ShoppingCart {
 	}
 	
 	public void removeProduct(Product product) throws ShoppingCartException	{
-		for (ShoppingCartRow s : shoppingCart)	{
-			if (s.getproduct().equals(product))	{
-				if (s.getNumberOfproducts()==1){
-					shoppingCart.remove(s);
+		for (ShoppingCartRow row : shoppingCart)	{
+			if (row.getproduct().equals(product))	{
+				if (row.getNumberOfproducts()==1){
+					shoppingCart.remove(row);
 					return;
 				}	else	{
-					s.decreaseNumberOfproducts();
+					row.decreaseNumberOfproducts();
+					return;
 				}
 			}
 		}

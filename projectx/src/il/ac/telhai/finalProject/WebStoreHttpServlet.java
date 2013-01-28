@@ -18,193 +18,248 @@ import java.util.List;
 public class WebStoreHttpServlet extends HttpServlet {
 	private static final long serialVersionUID = -8060931133910859939L;
 	public static final String USER_COOKIE_NAME = "UserCookie";
+	public static final String COMMENTS_ATTR = "comments";
+	public static final String CART_ATTR = "shoppingCart";
+	public static final String WEBAPP_NAME = "/finalProjectV1.0";
+	
 	private static Logger logger;
 	static {
 		System.out.println("in the static block");
 		logger = Logger.getLogger("WebStoreHttpServletLogger");
 		BasicConfigurator.configure();
-        try
-        {
-            logger.addAppender(new FileAppender(new SimpleLayout(), "C:\\Users\\eyal\\workspace\\WebStoreHttpServletLogger.txt"));
-            logger.info("start logging");
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+		try {
+			logger.addAppender(new FileAppender(new SimpleLayout(),	"C:\\Logger.txt"));
+			logger.info("start logging");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		String uri = request.getRequestURI();
 		logger.info(" # # # # # # # # # # # # # # # # # # # # # # # # # # # ");
 		logger.info("-I- New URI request(method post): " + uri);
-		
-		if (uri.equals("/finalProjectV1.0/academic/UserLogin/")) {
+
+		if (uri.equals(WEBAPP_NAME+"/academic/UserLogin/")) {
 			login(request, response);
 		}
 	}
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		String uri = request.getRequestURI();
 		logger.info(" # # # # # # # # # # # # # # # # # # # # # # # # # # # ");
 		logger.info("-I- New URI request(method get): " + uri);
-		
-		 if (uri.equals("/finalProjectV1.0/academic/sendRequestForProduct/"))	{
+
+		if (uri.equals(WEBAPP_NAME+"/academic/sendRequestForProduct/")) {
 			sendRequestForProduct(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/sendRequestForProducts/"))	{
+		} else if (uri
+				.equals(WEBAPP_NAME+"/academic/sendRequestForProducts/")) {
 			sendRequestForProducts(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/addProduct/"))	{
+		} else if (uri.equals(WEBAPP_NAME+"/academic/addProduct/")) {
 			addProduct(request, response);
-			homepage(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/showAllMyProducts/"))	{
+		} else if (uri.equals(WEBAPP_NAME+"/academic/removeProduct/")) {
+			removeProduct(request, response);
+		} else if (uri.equals(WEBAPP_NAME+"/academic/showAllMyProducts/")) {
 			showAllMyProducts(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/SignOut/"))	{
+		} else if (uri.equals(WEBAPP_NAME+"/academic/SignOut/")) {
 			logout(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/HomePage/"))	{
-			homepage(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/SignIn/"))	{
+		} else if (uri.equals(WEBAPP_NAME+"/academic/HomePage/")) {
+			redirectToHomepage(response);
+		} else if (uri.equals(WEBAPP_NAME+"/academic/SignIn/")) {
 			forwardToLoginPage(request, response);
-		} else if (uri.equals("/finalProjectV1.0/academic/Camera/"))	{
-			getServletContext().getRequestDispatcher("/examples/04-jquery-mobile.html").forward(request, response);
+		} else if (uri.equals(WEBAPP_NAME+"/academic/Camera/")) {
+			getServletContext().getRequestDispatcher(
+					"/examples/04-jquery-mobile.html").forward(request,
+					response);
 		} else {
 			redirectToLoginPage(response);
 		}
 	}
-	
-	
-	private void homepage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-	{
-		response.sendRedirect("/finalProjectV1.0/home.jsp");
+
+	private void removeProduct(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		
+		String attrMessage = "Product removed from cart";
+		
+		try {
+			WebStoreDAO db = WebStoreDAO.getProductHybernateDAO();
+			Integer productId = Integer.parseInt(request
+					.getParameter("productId"));
+			Product product = db.getProduct(productId);
+			HttpSession session = request.getSession();
+			ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(CART_ATTR);
+			if (shoppingCart == null) {
+				attrMessage = "Empty Shopping Cart!";
+				return;	// finally executes either way
+			}
+			shoppingCart.removeProduct(product);
+		} catch (ShoppingCartException e) {
+			attrMessage = "Failed to remove product!" + e.getMessage();
+		} catch (WebStoreDAOException e) {
+			e.printStackTrace();
+			attrMessage = "DB exception " + e.getMessage();
+		} catch (NumberFormatException nfe) {
+			attrMessage = "Invalid product number entered!"  + nfe.getMessage();
+		} finally {
+			request.setAttribute(COMMENTS_ATTR, attrMessage);
+			forwardToHomepage(request, response);
+		}
 	}
-	
-	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-	{
+
+	private void forwardToHomepage(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		getServletContext().getRequestDispatcher("/home.jsp").forward(request,
+				response);
+	}
+
+	private void redirectToHomepage(HttpServletResponse response)
+			throws IOException, ServletException {
+		response.sendRedirect(WEBAPP_NAME+"/home.jsp");
+	}
+
+	private void logout(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		try {
 		logger.info("user signout started");
 		Cookie userCookie = getUserCookie(request);
-		if (userCookie == null)	{
+		if (userCookie == null) {
 			logger.info("Could not find USER_COOKIE_NAME("+USER_COOKIE_NAME+")");
 			return;
 		}
 		userCookie.setMaxAge(0);
 		userCookie.setPath("/");
 		response.addCookie(userCookie);
-		request.getSession().invalidate();
-		homepage(request, response);
-		logger.info("user signout finished");
+		logger.info("user signout finished");			
+		}
+		finally {
+			request.getSession().invalidate();
+			redirectToHomepage(response);
+			logger.info("user signout finished");			
+		}
 	}
-	
-	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
+
+	private void login(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		logger.info(" # # # # # # # # # # # # # # # # # # # # # # # # # # # ");
 		logger.info("-I- new login attempt");
-		try {	
-			WebStoreDAO db  = WebStoreDAO.getProductHybernateDAO();
-			User loginUser = new User(request.getParameter("User"),  request.getParameter("Password"));
-			if (! db.getExistingUser(loginUser.getName()) || ! db.validateUserPassword(loginUser))	{
+		try {
+			WebStoreDAO db = WebStoreDAO.getProductHybernateDAO();
+			User loginUser = new User(request.getParameter("User"),
+					request.getParameter("Password"));
+			if (!db.getExistingUser(loginUser.getName())
+					|| !db.validateUserPassword(loginUser)) {
 				logger.error("ERROR: wrong user name or password");
-				request.getSession().setAttribute("comments", "incorrect  username or password");
-				request.setAttribute("comments", "incorrect  username or password");
+				request.getSession().setAttribute(COMMENTS_ATTR,
+						"incorrect  username or password");
+				request.setAttribute(COMMENTS_ATTR,
+						"incorrect  username or password");
 				forwardToLoginPage(request, response);
 				return;
 			}
-			
+
 			// if we got here username and password are correct
 			setUserCookie(request, response, loginUser.getName());
-			response.sendRedirect("/finalProjectV1.0/home.jsp");
+			redirectToHomepage(response);
 		} catch (WebStoreDAOException e) {
 			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	private void redirectToLoginPage(HttpServletResponse response) throws IOException {
-		response.sendRedirect("/finalProjectV1.0/academic/SignIn/");
+
+	private void redirectToLoginPage(HttpServletResponse response)
+			throws IOException {
+		response.sendRedirect(WEBAPP_NAME+"/academic/SignIn/");
 	}
-	
-	private void forwardToLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+
+	private void forwardToLoginPage(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		getServletContext().getRequestDispatcher("/login.jsp").forward(request,
+				response);
 
 	}
-	
-	private void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
-		//TODO: handle null
+
+	private void addProduct(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		String attrMessage = "Product added to cart!";
 		try {
-			WebStoreDAO db  = WebStoreDAO.getProductHybernateDAO();
-			Integer productId = Integer.parseInt(request.getParameter("productId"));
+			WebStoreDAO db = WebStoreDAO.getProductHybernateDAO();
+			Integer productId = Integer.parseInt(request
+					.getParameter("productId"));
 			Product product = db.getProduct(productId);
 			HttpSession session = request.getSession();
-			String shoppingCartAttributeName = "shoppingCart";
-			ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(shoppingCartAttributeName);
-			if (shoppingCart == null)	{
+			ShoppingCart shoppingCart = (ShoppingCart) session
+					.getAttribute(CART_ATTR);
+			if (shoppingCart == null) {
 				shoppingCart = new ShoppingCart();
 				shoppingCart.addProduct(product);
-			}	else	{
+				session.setAttribute(CART_ATTR, shoppingCart);
+			} else {
 				shoppingCart.addProduct(product);
 			}
-			session.setAttribute(shoppingCartAttributeName , shoppingCart);
 		} catch (WebStoreDAOException e) {
 			e.printStackTrace();
+			attrMessage = e.getMessage();
+		} catch (NumberFormatException nfe) {
+			attrMessage = "Invalid product number entered!";
+		} finally {
+			request.setAttribute(COMMENTS_ATTR, attrMessage);
+			forwardToHomepage(request, response);
 		}
 	}
-	
-	private void showAllMyProducts(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
-		try {
+
+	private void showAllMyProducts(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
 			HttpSession session = request.getSession();
-			String shoppingCartAttributeName = "shoppingCart";
-			ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(shoppingCartAttributeName);
-			request.setAttribute(shoppingCartAttributeName, shoppingCart);
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shoppingCart.jsp");
-			dispatcher.forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+			ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(CART_ATTR);
+			if (shoppingCart == null) {
+				request.setAttribute(COMMENTS_ATTR, "Cart is empty!");
+				forwardToHomepage(request, response);
+				return;
+			}
+			getServletContext().getRequestDispatcher("/shoppingCart.jsp").forward(request, response);
 	}
-	
-	private void sendRequestForProduct(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
+
+	private void sendRequestForProduct(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
 		try {
-			WebStoreDAO db  = WebStoreDAO.getProductHybernateDAO();
-			Integer productId = Integer.parseInt(request.getParameter("productId"));
+			WebStoreDAO db = WebStoreDAO.getProductHybernateDAO();
+			Integer productId = Integer.parseInt(request
+					.getParameter("productId"));
+
 			Product product = db.getProduct(productId);
 			logger.info("-I- Product info: " + product.toString());
 			request.setAttribute("product", product);
-			
-			response.sendRedirect("/finalProjectV1.0/product.jsp");
-//			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/product.jsp");
-//			dispatcher.forward(request, response);
-			
+			getServletContext().getRequestDispatcher(WEBAPP_NAME+"/product.jsp").forward(request, response);
+			return;
 		} catch (WebStoreDAOException e) {
 			e.printStackTrace();
-		} 
-//		catch (ServletException e) {
-//			e.printStackTrace();
-//		} 
+			request.setAttribute(COMMENTS_ATTR, e.getMessage());
+		} catch (NumberFormatException nfe) {
+			request.setAttribute(COMMENTS_ATTR, "Invalid product number entered!");
+		}
+		forwardToHomepage(request, response);
 	}
-	
-	private void sendRequestForProducts(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
+
+	private void sendRequestForProducts(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
 		try {
-			WebStoreDAO db  = WebStoreDAO.getProductHybernateDAO();
+			WebStoreDAO db = WebStoreDAO.getProductHybernateDAO();
 			logger.info("-I- Request for all products");
 			List<Product> products = db.getProducts();
 			logger.info("-I- Product info: " + products.toString());
 			request.setAttribute("products", products);
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/products.jsp");
-			dispatcher.forward(request, response);				
+			getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
 		} catch (WebStoreDAOException e) {
 			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} 
+		}
 	}
-	
+
 	/**
-	 * @param request HttpServletRequest object represent the request
+	 * @param request
+	 *            HttpServletRequest object represent the request
 	 * @return the cookie corresponding to the cookie represent the user
 	 */
 	private Cookie getUserCookie(HttpServletRequest request) {
@@ -215,22 +270,26 @@ public class WebStoreHttpServlet extends HttpServlet {
 					return (Cookie) cookies[i];
 		return null;
 	}
-	
+
 	/**
 	 * 
-	 * @param request HttpServletRequest object represent the request
-	 * @param response HttpServletResponse object represent the response
-	 * @param loginName the login name to assign to the cookie
-	 * @return true on success else false when the cookie already were assigned 
+	 * @param request
+	 *            HttpServletRequest object represent the request
+	 * @param response
+	 *            HttpServletResponse object represent the response
+	 * @param loginName
+	 *            the login name to assign to the cookie
+	 * @return true on success else false when the cookie already were assigned
 	 */
-	private boolean setUserCookie(HttpServletRequest request, HttpServletResponse response, String loginName) {
+	private boolean setUserCookie(HttpServletRequest request,
+			HttpServletResponse response, String loginName) {
 		logger.info("setUserCookie started");
 		Cookie[] cookies = request.getCookies();
 		for (int i = 0; i < cookies.length; i++)
-			if (cookies[i].getName().equals(USER_COOKIE_NAME))	{
-				if (cookies[i].getValue().equals(loginName))	{
+			if (cookies[i].getName().equals(USER_COOKIE_NAME)) {
+				if (cookies[i].getValue().equals(loginName)) {
 					logger.info("setUserCookie finished - cookie already exists");
-				}	else	{
+				} else {
 					logger.info("setUserCookie finished - username has been modified");
 					cookies[i].setValue(loginName);
 				}
@@ -239,7 +298,7 @@ public class WebStoreHttpServlet extends HttpServlet {
 		// make sure we are not inserting this cookie again
 		Cookie cookie = new Cookie(USER_COOKIE_NAME, loginName);
 		cookie.setPath("/");
-		cookie.setMaxAge(60*60*24*7); //one hour
+		cookie.setMaxAge(60 * 60 * 24 * 7); // one hour
 		response.addCookie(cookie);
 		logger.info("setUserCookie finished - new cookie has been added");
 		return true;
