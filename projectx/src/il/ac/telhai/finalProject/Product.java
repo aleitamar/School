@@ -39,6 +39,14 @@ public class Product {
 		this.id = id;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Product) {
+			return ((Product) obj).getId() == this.getId();
+		}
+		return false;
+	}
+	
 	public String toString(){
 		return "Name: " + name + " Price: " + price + " ID: " + id;
 	}	

@@ -7,14 +7,14 @@
 			if (cookie.getName().equals("UserCookie"))	{
 			g	found = true;
 				%>
-				welcome <%=cookie.getValue() %>
+				<h2>welcome <%=cookie.getValue() %></h2>
 				<%
 				break;
 			}		
 		}
 		if (! found)	{
 		%>
-			hello guest
+			<h2>hello guest</h2>
 		<%
 		}
 	%>
