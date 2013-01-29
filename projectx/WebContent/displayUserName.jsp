@@ -5,7 +5,7 @@
 		Cookie[] temp = request.getCookies();
 		for (Cookie cookie : temp)	{
 			if (cookie.getName().equals("UserCookie"))	{
-			g	found = true;
+				found = true;
 				%>
 				<h2>welcome <%=cookie.getValue() %></h2>
 				<%
